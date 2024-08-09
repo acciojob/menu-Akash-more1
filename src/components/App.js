@@ -22,11 +22,11 @@ function App() {
       <h1 className="title">Our Menu</h1>
       <hr className="title-underline" />
       <div className="categories">
-        <h3 onClick={()=>{filterData('All')}}>All</h3>
-        <h3 onClick={()=>filterData('Breakfast')}>Breakfast</h3>
-        <h3 onClick={()=>{filterData('Lunch')}} >Lunch</h3>
-        <h3 onClick={()=>{filterData('Shakes')}} >Shakes</h3>
-      </div>
+  <h3 id="filter-btn-1" onClick={()=>{filterData('All')}}>All</h3>
+  <h3 id="filter-btn-2" onClick={()=>filterData('Breakfast')}>Breakfast</h3>
+  <h3 id="filter-btn-3" onClick={()=>{filterData('Lunch')}} >Lunch</h3>
+  <h3 id="filter-btn-4" onClick={()=>{filterData('Shakes')}} >Shakes</h3>
+</div>
       <div className="menu">
         {data.map((item) => (
           <div className="menu-item" key={item.id}>
