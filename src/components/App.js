@@ -1,36 +1,34 @@
-
-import React, { useState } from 'react'
-import{data as initialData} from './Data.js'
-import '../styles/App.css'
+import React, { useState } from 'react';
+import { data as initialData } from './Data.js';
+import '../styles/App.css';
 
 function App() {
- const [data, setData] = useState(initialData);
- const [cate, setCate]= useState('All');
+  const [data, setData] = useState(initialData);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
- const filterData= (category)=>{
-  if(category === 'All'){
-    setData(initialData);
-  }
-  else{
-    const filData = initialData.filter((item)=> item.category === category.toLowerCase());
-    setData(filData);
-  }
- }
+  const filterData = (category) => {
+    setSelectedCategory(category);
+    if (category === 'All') {
+      setData(initialData);
+    } else {
+      const filData = initialData.filter((item) => item.category === category.toLowerCase());
+      setData(filData);
+    }
+  };
 
   return (
     <div id="main">
       <h1 className="title">Our Menu</h1>
       <hr className="title-underline" />
       <div className="categories">
-  <h3 id="filter-btn-1" onClick={()=>{filterData('All')}}>All</h3>
-  <h3 id="filter-btn-2" onClick={()=>filterData('Breakfast')}>Breakfast</h3>
-  <h3 id="filter-btn-3" onClick={()=>{filterData('Lunch')}} >Lunch</h3>
-  <h3 id="filter-btn-4" onClick={()=>{filterData('Shakes')}} >Shakes</h3>
-</div>
+        <h3 id="filter-btn-1" onClick={() => filterData('All')}>All</h3>
+        <h3 id="filter-btn-2" onClick={() => filterData('Breakfast')}>Breakfast</h3>
+        <h3 id="filter-btn-3" onClick={() => filterData('Lunch')}>Lunch</h3>
+        <h3 id="filter-btn-4" onClick={() => filterData('Shakes')}>Shakes</h3>
+      </div>
       <div className="menu">
         {data.map((item) => (
-          <div className="menu-item" key={item.id} >
-            <div data-test-id={`menu-item-${item.category}`}>
+          <div className="menu-item" key={item.id} data-test-id={`menu-item-${item.category}`}>
             <img src={item.img} alt={item.title} className="item-img" />
             <div className="item-details">
               <div className="title-price">
@@ -40,7 +38,6 @@ function App() {
               <hr />
               <span>{item.desc}</span>
             </div>
-          </div>
           </div>
         ))}
       </div>
