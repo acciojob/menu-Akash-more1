@@ -29,7 +29,8 @@ function App() {
 </div>
       <div className="menu">
         {data.map((item) => (
-          <div className="menu-item" key={item.id} data-test-id={`menu-item-${item.category.charAt(0).toUpperCase() + item.category.slice(1)}`}>
+          <div className="menu-item" key={item.id} >
+            <div data-test-id={`menu-item-${item.category}`}>
             <img src={item.img} alt={item.title} className="item-img" />
             <div className="item-details">
               <div className="title-price">
@@ -39,6 +40,7 @@ function App() {
               <hr />
               <span>{item.desc}</span>
             </div>
+          </div>
           </div>
         ))}
       </div>
